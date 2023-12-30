@@ -1,5 +1,9 @@
-import Image from 'next/image';
+import CTAButton from '@/components/cta';
 
 export default function Home() {
-  return <main className='flex flex-col'>home</main>;
+  return (
+    <main className='flex flex-col'>
+      <CTAButton buttonType='primary'>Teste</CTAButton>
+    </main>
+  );
 }
