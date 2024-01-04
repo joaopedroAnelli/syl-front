@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import { tv } from 'tailwind-variants';
 
-type CTAButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type CTAButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   buttonType?: 'primary' | 'secondary';
   fluid?: boolean;
 };
@@ -24,7 +24,7 @@ const buttonVariant = tv({
   },
 });
 
-const CTAButton: React.FC<CTAButtonProps> = ({
+export const CTAButton: React.FC<CTAButtonProps> = ({
   children,
   buttonType,
   fluid,
@@ -43,5 +43,3 @@ const CTAButton: React.FC<CTAButtonProps> = ({
     </button>
   );
 };
-
-export default CTAButton;

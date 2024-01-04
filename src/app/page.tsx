@@ -1,4 +1,4 @@
-import CTAButton from '@/components/cta';
+import { CTAButton } from '@/components/cta';
 
 export default function Home() {
   return (
