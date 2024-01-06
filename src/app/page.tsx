@@ -1,9 +1,9 @@
-import { CTAButton } from '@/components/cta';
+import { Hero } from '@/sections/hero';
 
 export default function Home() {
   return (
-    <main className='flex flex-col'>
-      <CTAButton buttonType='primary'>Teste</CTAButton>
-    </main>
+    <div className='flex flex-col h-full'>
+      <Hero />
+    </div>
   );
 }
