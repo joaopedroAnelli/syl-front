@@ -1,4 +1,6 @@
-const requestCMS = async (url: string) => {
+const requestCMS = async <ResponseDTO = any>(
+  url: string
+): Promise<ResponseDTO> => {
   const res = await fetch(`${process.env.CMS_HOST}/api/${url}`, {
     headers: {
       Authorization: `Bearer ${process.env.CMS_API_KEY}`,
