@@ -1,3 +1,4 @@
+import { Banner } from '@/sections/banner';
 import { Hero } from '@/sections/hero';
 import WhoAmI from '@/sections/who-am-i';
 
@@ -6,6 +7,9 @@ export default function Home() {
     <div className='flex flex-col h-full'>
       <Hero />
       <WhoAmI />
+      <div className='flex'>
+        <Banner />
+      </div>
     </div>
   );
 }
