@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import Image, { ImageProps } from 'next/image';
+import CMSImage, { CMSImageProps } from '../cms-image';
 
-export const Avatar: FC<ImageProps> = ({
+export const Avatar: FC<CMSImageProps> = ({
   alt,
   width,
   height,
@@ -9,7 +9,7 @@ export const Avatar: FC<ImageProps> = ({
   ...props
 }) => {
   return (
-    <Image
+    <CMSImage
       {...props}
       alt={alt}
       width={width || 80}

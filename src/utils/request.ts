@@ -3,6 +3,9 @@ const requestCMS = async (url: string) => {
     headers: {
       Authorization: `Bearer ${process.env.CMS_API_KEY}`,
     },
+    next: {
+      tags: ['static-content'],
+    },
   });
 
   return res.json();

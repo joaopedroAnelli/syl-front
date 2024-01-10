@@ -25,7 +25,7 @@ describe('CTAButton', () => {
     const button = screen.getByRole('button');
 
     expect(button).toHaveClass(
-      'px-4 py-2 font-bold rounded-md text-lg bg-off-white text-charcoal-grey-500'
+      'px-6 py-3 font-bold rounded-md text-lg bg-off-white text-charcoal-grey-500'
     );
 
     expect(button).not.toHaveClass('bg-deep-blue text-off-white');
@@ -37,7 +37,7 @@ describe('CTAButton', () => {
     const button = screen.getByRole('button');
 
     expect(button).toHaveClass(
-      'px-4 py-2 font-bold rounded-md text-lg bg-deep-blue text-off-white'
+      'px-6 py-3 font-bold rounded-md text-lg bg-deep-blue text-off-white'
     );
   });
 
@@ -47,7 +47,7 @@ describe('CTAButton', () => {
     const button = screen.getByRole('button');
 
     expect(button).toHaveClass(
-      'px-4 py-2 font-bold rounded-md text-lg bg-gold text-off-white'
+      'px-6 py-3 font-bold rounded-md text-lg bg-gold text-deep-blue'
     );
   });
 

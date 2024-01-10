@@ -8,7 +8,7 @@ const resizeWindow = (x: number, y: number) => {
   window.dispatchEvent(new Event('resize'));
 };
 
-describe('CTAButton', () => {
+describe('Header', () => {
   it('renders a h1', () => {
     render(<Header as='h1'>Test</Header>);
 
@@ -50,12 +50,12 @@ describe('CTAButton', () => {
   });
 
   it('should override color', () => {
-    render(<Header color='secondary'>Test</Header>);
+    render(<Header color='gold'>Test</Header>);
 
     const h1 = screen.getByRole('heading');
 
     expect(h1).toHaveClass(
-      'font-serif tracking-tight font-bold text-5xl md:text-6xl lg:text-7xl text-secondary'
+      'font-serif font-bold text-5xl md:text-6xl lg:text-7xl tracking-tight text-gold'
     );
   });
 
