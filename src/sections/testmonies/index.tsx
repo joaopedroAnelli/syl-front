@@ -16,17 +16,17 @@ export const Testimonies: FC<TestimoniesProps> = async ({}) => {
   const { texts } = pageData;
 
   return (
-    <div className='flex flex-col gap-6 md:gap-12 items-center bg-off-white'>
+    <div className='flex flex-col gap-6 md:gap-12 items-center bg-off-white md:flex-1'>
       <Header
         as='h2'
         size='md'
         color='deepBlue'
-        className='text-center p-6 md:p-12'
+        className='text-center px-6 md:px-12 pt-6 md:pt-12'
       >
         {texts.testimonies.title}
       </Header>
 
-      <div className='flex gap-6 md:gap-12 p-6 md:p-12 max-w-[100vw] overflow-x-auto'>
+      <div className='flex gap-6 md:gap-12 px-6 md:px-12 max-w-[100vw] overflow-x-auto md:max-w-[50vw]'>
         {testmonies?.data.map((testimony) => (
           <Testimony.Root key={testimony.id}>
             <Testimony.Content>
@@ -51,7 +51,7 @@ export const Testimonies: FC<TestimoniesProps> = async ({}) => {
         ))}
       </div>
 
-      <div className='px-6 md:px-12 w-full'>
+      <div className='px-6 md:px-12 pb-6 md:pb-12 w-full'>
         <CTAButton buttonType='primary' fluid>
           {texts.testimonies.cta}
         </CTAButton>
