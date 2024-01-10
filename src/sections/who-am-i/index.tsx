@@ -28,7 +28,7 @@ export const WhoAmI: FC = async () => {
           {texts.whoAmI.title}
         </Header>
 
-        <div className='flex flex-col gap-6 items-center p-6 bg-deep-blue rounded-md'>
+        <div className='flex flex-col gap-6 items-center bg-deep-blue rounded-md'>
           <div className='flex flex-col gap-3 items-center'>
             <Avatar
               width={100}
