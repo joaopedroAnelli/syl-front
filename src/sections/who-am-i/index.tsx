@@ -7,7 +7,7 @@ import { CTAButton } from '@/components/cta';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import CMSImage from '@/components/cms-image';
 
-const WhoAmI: FC = async () => {
+export const WhoAmI: FC = async () => {
   const pageData = await fetchPageData<Texts>('home');
 
   const { texts, images, rich_texts } = pageData;
@@ -28,7 +28,7 @@ const WhoAmI: FC = async () => {
           {texts.whoAmI.title}
         </Header>
 
-        <div className='flex flex-col gap-6 items-center p-6 bg-deep-blue rounded-md'>
+        <div className='flex flex-col gap-6 items-center bg-deep-blue rounded-md'>
           <div className='flex flex-col gap-3 items-center'>
             <Avatar
               width={100}
@@ -87,5 +87,3 @@ const WhoAmI: FC = async () => {
     </>
   );
 };
-
-export default WhoAmI;

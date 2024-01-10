@@ -1,20 +1,25 @@
 import { FC } from 'react';
-import ImageComponent, { ImageProps as ImageComponentProps } from 'next/image';
 import { tv } from 'tailwind-variants';
+import CMSImage, { CMSImageProps } from '../cms-image';
 
-export type ImageProps = ImageComponentProps & {
+export type ImageProps = CMSImageProps & {
   className?: string;
   alt: string;
 };
 
 const style = tv({
-  base: 'm-4',
+  base: 'rounded-full',
 });
 
 export const Image: FC<ImageProps> = ({ className, alt, ...props }) => {
   return (
-    <div className={style({ className })}>
-      <ImageComponent width={56} height={56} alt={alt} {...props} />
-    </div>
+    <CMSImage
+      width={56}
+      height={56}
+      style={{ width: 56, height: 56, objectFit: 'cover' }}
+      alt={alt}
+      className={style({ className })}
+      {...props}
+    />
   );
 };

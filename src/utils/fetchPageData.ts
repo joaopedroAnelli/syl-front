@@ -1,4 +1,4 @@
-import requestCMS from './request';
+import requestCMS from './requestCMS';
 
 export type Page<TextsSchema = any> = {
   name: string;
