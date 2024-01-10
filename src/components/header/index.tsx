@@ -2,15 +2,17 @@ import { FC, PropsWithChildren } from 'react';
 import { tv } from 'tailwind-variants';
 
 const headerStyle = tv({
-  base: 'font-serif tracking-tight font-bold',
+  base: 'font-serif font-bold',
   variants: {
     size: {
-      lg: 'text-5xl md:text-6xl lg:text-7xl',
-      md: 'text-xl md:text-2xl lg:text-3xl',
+      lg: 'text-5xl md:text-6xl lg:text-7xl tracking-tight',
+      md: 'text-3xl md:text-4xl lg:text-5xl tracking-tight',
+      sm: 'text-2xl md:text-3xl lg:text-4xl tracking-tight',
+      xs: 'text-xl md:text-2xl lg:text-3xl tracking-normal',
     },
     color: {
-      primary: 'text-primary',
-      secondary: 'text-secondary',
+      deepBlue: 'text-deep-blue',
+      gold: 'text-gold',
       default: 'text-off-white',
     },
   },

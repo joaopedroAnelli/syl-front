@@ -2,7 +2,6 @@ import { CTAButton } from '@/components/cta';
 import { Header } from '@/components/header';
 import { FC } from 'react';
 import CMSImage from '@/components/cms-image';
-import HeroBody from '@/components/hero-body';
 import Navbar from '@/components/navbar';
 import { Subtitle } from '@/components/subtitle';
 import { fetchPageData } from '@/utils/fetchPageData';
@@ -19,13 +18,12 @@ export const Hero: FC<HeroProps> = async ({}) => {
     (image) => image.attributes.name === 'hero'
   );
 
-  const heroImageUrl = heroImage?.attributes.url;
   return (
-    <main className='flex flex-col h-[90%] relative'>
-      {heroImageUrl && (
+    <div className='flex flex-col h-[95dvh] relative md:h-[80dvh]'>
+      {heroImage && (
         <CMSImage
-          alt='hero image'
-          src={heroImageUrl}
+          alt={heroImage.attributes.alternativeText}
+          src={heroImage.attributes.url}
           fill
           style={{ objectFit: 'cover', position: 'absolute' }}
         />
@@ -33,7 +31,7 @@ export const Hero: FC<HeroProps> = async ({}) => {
 
       <Navbar />
 
-      <HeroBody>
+      <main className='flex flex-col justify-between flex-1 items-center p-6 md:justify-center md:gap-8'>
         <div className='z-10 flex flex-col items-center'>
           <Header as='h1' size='lg' className='z-10 mb-1 md:text-deep-blue'>
             {texts.hero.title}
@@ -43,10 +41,10 @@ export const Hero: FC<HeroProps> = async ({}) => {
           </Subtitle>
         </div>
 
-        <CTAButton buttonType='secondary' className='z-10 w-full md:w-auto'>
+        <CTAButton buttonType='secondary' className='z-10 md:w-auto' fluid>
           {texts.hero.cta}
         </CTAButton>
-      </HeroBody>
-    </main>
+      </main>
+    </div>
   );
 };

@@ -7,3 +7,12 @@
 
 body {
 }
+
+.mdx-wrapper p,
+ul {
+  @apply mb-6;
+}
+
+.mdx-wrapper ul {
+  @apply list-disc list-inside;
+}

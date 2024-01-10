@@ -2,17 +2,17 @@ import React, { ButtonHTMLAttributes } from 'react';
 import { tv } from 'tailwind-variants';
 
 export type CTAButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  buttonType?: 'primary' | 'secondary';
+  buttonType?: 'primary' | 'secondary' | 'default';
   fluid?: boolean;
 };
 
 const buttonVariant = tv({
-  base: 'px-4 py-2 font-bold rounded-md text-lg',
+  base: 'px-6 py-3 font-bold rounded-md text-lg',
   variants: {
     buttonType: {
       default: 'bg-off-white text-charcoal-grey-500',
       primary: 'bg-deep-blue text-off-white',
-      secondary: 'bg-gold text-off-white',
+      secondary: 'bg-gold text-deep-blue',
     },
     fluid: {
       true: 'w-full',
@@ -26,7 +26,7 @@ const buttonVariant = tv({
 
 export const CTAButton: React.FC<CTAButtonProps> = ({
   children,
-  buttonType,
+  buttonType = 'default',
   fluid,
   ...props
 }) => {

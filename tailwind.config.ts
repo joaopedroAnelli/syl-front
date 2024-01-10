@@ -10,7 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'deep-blue': '#003366',
+        'deep-blue': '#0D1530',
+        'deep-blue-400': '#172556',
         'charcoal-grey-500': '#36454F',
         'charcoal-grey-400': '#68747B',
         gold: '#D4AF37',

@@ -9,6 +9,16 @@ export type Page<TextsSchema = any> = {
       attributes: {
         name: string;
         url: string;
+        alternativeText: string;
+      };
+    }[];
+  };
+  rich_texts: {
+    data: {
+      id: number;
+      attributes: {
+        key: string;
+        value: string;
       };
     }[];
   };
@@ -36,7 +46,7 @@ export const fetchPageData = async <TextsSchema>(
   page: string
 ): Promise<Page<TextsSchema>> => {
   const res: PageDataDTO<TextsSchema> = await requestCMS(
-    'pages?populate=images&filters[name][$eqi]=' + page
+    'pages?populate=*&filters[name][$eqi]=' + page
   );
 
   const { data } = res;
