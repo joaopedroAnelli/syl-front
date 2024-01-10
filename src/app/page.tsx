@@ -1,6 +1,6 @@
 import { Banner } from '@/sections/banner';
 import { Hero } from '@/sections/hero';
-import WhoAmI from '@/sections/who-am-i';
+import { WhoAmI } from '@/sections/who-am-i';
 
 export default function Home() {
   return (

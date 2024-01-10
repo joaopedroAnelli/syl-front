@@ -7,7 +7,7 @@ import { CTAButton } from '@/components/cta';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import CMSImage from '@/components/cms-image';
 
-const WhoAmI: FC = async () => {
+export const WhoAmI: FC = async () => {
   const pageData = await fetchPageData<Texts>('home');
 
   const { texts, images, rich_texts } = pageData;
@@ -87,5 +87,3 @@ const WhoAmI: FC = async () => {
     </>
   );
 };
-
-export default WhoAmI;
