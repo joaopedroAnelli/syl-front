@@ -23,7 +23,7 @@ export const WhoAmI: FC = async () => {
   return (
     <>
       {/* Mobile */}
-      <div className='flex flex-col gap-6 items-center p-6 bg-deep-blue md:hidden'>
+      <section className='flex flex-col gap-6 items-center p-6 bg-deep-blue md:hidden'>
         <Header as='h2' size='md'>
           {texts.whoAmI.title}
         </Header>
@@ -48,10 +48,10 @@ export const WhoAmI: FC = async () => {
         <CTAButton buttonType='secondary' fluid>
           {texts.whoAmI.cta}
         </CTAButton>
-      </div>
+      </section>
 
       {/* Desktop & Tablets */}
-      <div className='hidden md:flex p-6 bg-deep-blue gap-6 lg:gap-12 lg:p-12'>
+      <section className='hidden md:flex p-6 bg-deep-blue gap-6 lg:gap-12 lg:p-12'>
         <div className='flex flex-col items-end gap-6 flex-[2] lg:gap-12'>
           <CMSImage
             src={avatarImage?.attributes.url || ''}
@@ -83,7 +83,7 @@ export const WhoAmI: FC = async () => {
 
           <CTAButton buttonType='secondary'>{texts.whoAmI.cta}</CTAButton>
         </div>
-      </div>
+      </section>
     </>
   );
 };
