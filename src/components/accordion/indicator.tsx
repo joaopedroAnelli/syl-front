@@ -11,6 +11,7 @@ export const Indicator: FC<IndicatorProps> = ({ children }) => {
 
   return (
     <ChevronDownIcon
+      data-testid='accordion-indicator'
       className={`text-off-white h-5 w-5 transition-transform transform ${
         open ? 'rotate-180' : ''
       }`}

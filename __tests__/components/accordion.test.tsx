@@ -29,7 +29,7 @@ describe('Accordion', () => {
 
       expect(screen.getByText('Accordion')).toBeVisible();
 
-      expect(screen.queryByText(loremIpsum)).toBeNull();
+      expect(screen.queryByTestId('accordion-body')).toHaveClass('invisible');
     });
 
     it('renders with accordion open', () => {
@@ -39,7 +39,7 @@ describe('Accordion', () => {
 
       expect(screen.getByText('Accordion')).toBeVisible();
 
-      expect(screen.queryByText(loremIpsum)).toBeNull();
+      expect(screen.queryByTestId('accordion-body')).toHaveClass('invisible');
 
       act(() => {
         screen.getByRole('button').click();
@@ -55,7 +55,7 @@ describe('Accordion', () => {
 
       expect(screen.getByText('Accordion')).toBeVisible();
 
-      expect(screen.queryByText(loremIpsum)).toBeNull();
+      expect(screen.queryByTestId('accordion-body')).toHaveClass('invisible');
 
       act(() => {
         screen.getByRole('button').click();
@@ -67,7 +67,7 @@ describe('Accordion', () => {
         screen.getByRole('button').click();
       });
 
-      expect(screen.queryByText(loremIpsum)).toBeNull();
+      expect(screen.queryByTestId('accordion-body')).toHaveClass('invisible');
     });
   });
 
@@ -77,17 +77,15 @@ describe('Accordion', () => {
 
       const container = screen.getByTestId('accordion-container');
 
-      expect(container).toHaveClass(
-        'border-t border-b border-charcoal-grey py-2 bg-deep-blue'
-      );
+      expect(container).toHaveClass('border-b border-slate-500 bg-deep-blue');
 
       const title = screen.getByText('Accordion');
 
-      expect(title).toHaveClass('mx-4 text-off-white');
+      expect(title).toHaveClass('text-off-white text-left');
 
-      const trigger = screen.getByRole('button');
+      const indicator = screen.getByTestId('accordion-indicator');
 
-      expect(trigger).toHaveClass('text-off-white');
+      expect(indicator).toHaveClass('text-off-white');
     });
 
     it('should be good looking when open', () => {
@@ -102,11 +100,13 @@ describe('Accordion', () => {
 
       const body = screen.getByTestId('accordion-body');
 
-      expect(body).toHaveClass('bg-deep-blue py-2');
+      expect(body).toHaveClass(
+        'bg-deep-blue transition-all ease-in-out overflow-hidden max-h-96 py-6 md:py-12'
+      );
 
       const description = screen.getByText(loremIpsum);
 
-      expect(description).toHaveClass('mx-4 text-off-white');
+      expect(description).toHaveClass('text-slate-500');
     });
   });
 
@@ -120,5 +120,11 @@ describe('Accordion', () => {
     };
 
     render(<FakeComponent />);
+  });
+
+  it('should match snapshot', () => {
+    const { container } = render(<AccordionComponent />);
+
+    expect(container).toMatchSnapshot();
   });
 });

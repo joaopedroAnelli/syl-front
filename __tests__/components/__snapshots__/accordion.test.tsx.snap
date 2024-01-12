@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion should match snapshot 1`] = `
+<div>
+  <div
+    class="border-b border-slate-500 bg-deep-blue"
+    data-testid="accordion-container"
+  >
+    <button
+      class="w-full flex h-16 items-center justify-between"
+    >
+      <span
+        class="text-off-white text-left"
+      >
+        Accordion
+      </span>
+      <svg
+        aria-hidden="true"
+        class="text-off-white h-5 w-5 transition-transform transform "
+        data-slot="icon"
+        data-testid="accordion-indicator"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </button>
+    <div
+      class="bg-deep-blue transition-all ease-in-out overflow-hidden invisible max-h-0 p-0 "
+      data-testid="accordion-body"
+    >
+      <p
+        class="text-slate-500"
+      >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptate.
+      </p>
+    </div>
+  </div>
+</div>
+`;
