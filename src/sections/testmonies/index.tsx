@@ -31,7 +31,7 @@ export const Testimonies: FC<TestimoniesProps> = async ({}) => {
       <Carousel.Root
         // autoPlay
         // autoPlayDuration={7000}
-        className='flex gap-6 md:gap-12 px-6 md:px-12 max-w-[100dvw] overflow-x-hidden'
+        className='flex gap-6 md:gap-12 px-6 md:px-12 max-w-[calc(100dvw-0px)] md:max-w-[calc(100dvw-96px)] overflow-x-hidden'
       >
         <Carousel.Trigger.Prev className='ml-6 h-6 w-6 hidden md:inline text-deep-blue'>
           <ChevronLeftIcon />
