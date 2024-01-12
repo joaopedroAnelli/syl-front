@@ -1,4 +1,6 @@
-import { FC, PropsWithChildren, useContext } from 'react';
+'use client';
+
+import { FC, HTMLAttributes, PropsWithChildren, useContext } from 'react';
 import { AccordionContext } from './context';
 
 export type BodyProps = PropsWithChildren<{}>;
@@ -6,12 +8,13 @@ export type BodyProps = PropsWithChildren<{}>;
 export const Body: FC<BodyProps> = ({ children }) => {
   const { open } = useContext(AccordionContext);
 
-  if (!open) {
-    return null;
-  }
-
   return (
-    <div data-testid='accordion-body' className='py-2 bg-deep-blue'>
+    <div
+      data-testid='accordion-body'
+      className={`bg-deep-blue transition-all ease-in-out overflow-hidden ${
+        open ? 'max-h-96 py-6 md:py-12' : 'invisible max-h-0 p-0'
+      } `}
+    >
       {children}
     </div>
   );

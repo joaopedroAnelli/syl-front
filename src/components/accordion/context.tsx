@@ -1,10 +1,17 @@
 'use client';
 
-import { createContext, FC, PropsWithChildren, useState } from 'react';
+import {
+  createContext,
+  FC,
+  PropsWithChildren,
+  Dispatch,
+  SetStateAction,
+  useState,
+} from 'react';
 
 export type AccordionContextType = {
   open: boolean;
-  setOpen: (open: boolean) => void;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 export const AccordionContext = createContext<AccordionContextType>({
@@ -15,12 +22,8 @@ export const AccordionContext = createContext<AccordionContextType>({
 export const AccordionProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   const [open, setOpen] = useState(false);
 
-  const changeOpen = (open: boolean) => {
-    setOpen(open);
-  };
-
   return (
-    <AccordionContext.Provider value={{ open, setOpen: changeOpen }}>
+    <AccordionContext.Provider value={{ open, setOpen }}>
       {children}
     </AccordionContext.Provider>
   );

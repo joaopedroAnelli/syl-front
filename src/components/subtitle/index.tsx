@@ -7,10 +7,24 @@ const style = tv({
     color: {
       default: 'text-off-white',
       grey: 'text-charcoal-grey-500',
+      slate: 'text-slate-500',
+    },
+    size: {
+      default: '',
+      sm: 'text-sm',
+      md: 'text-base',
+      lg: 'text-lg',
+      xl: 'text-xl',
+      '2xl': 'text-2xl',
+      '3xl': 'text-3xl',
+      '4xl': 'text-4xl',
+      '5xl': 'text-5xl',
+      '6xl': 'text-6xl',
     },
   },
   defaultVariants: {
     color: 'default',
+    size: 'default',
   },
 });
 

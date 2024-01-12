@@ -18,7 +18,7 @@ export const Testimonies: FC<TestimoniesProps> = async ({}) => {
   const { texts } = pageData;
 
   return (
-    <div className='flex flex-col gap-6 md:gap-12 items-center bg-off-white md:flex-1'>
+    <section className='flex flex-col gap-6 md:gap-12 items-center bg-off-white md:flex-1'>
       <Header
         as='h2'
         size='md'
@@ -70,6 +70,6 @@ export const Testimonies: FC<TestimoniesProps> = async ({}) => {
           {texts.testimonies.cta}
         </CTAButton>
       </div>
-    </div>
+    </section>
   );
 };
