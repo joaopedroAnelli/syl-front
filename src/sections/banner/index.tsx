@@ -17,7 +17,7 @@ export const Banner: FC<BannerProps> = async ({}) => {
   );
 
   return (
-    <div className='flex flex-col h-[33dvh] relative p-6 md:p-12 md:flex-1  md:h-auto'>
+    <div className='flex flex-col h-[50dvh] relative p-6 md:p-12'>
       {bannerImage && (
         <CMSImage
           alt={bannerImage.attributes.alternativeText}

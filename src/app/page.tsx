@@ -8,10 +8,8 @@ export default function Home() {
     <div className='flex flex-col h-full'>
       <Hero />
       <WhoAmI />
-      <div className='flex flex-col md:flex-row items-stretch'>
-        <Banner />
-        <Testimonies />
-      </div>
+      <Banner />
+      <Testimonies />
     </div>
   );
 }
