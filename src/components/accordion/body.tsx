@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, PropsWithChildren, useContext } from 'react';
 import { AccordionContext } from './context';
 
