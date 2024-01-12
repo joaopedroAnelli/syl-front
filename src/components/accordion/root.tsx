@@ -8,7 +8,7 @@ export const Root: FC<RootProps> = ({ children }) => {
     <AccordionProvider>
       <div
         data-testid='accordion-container'
-        className='border-t border-b border-charcoal-grey py-2 bg-deep-blue'
+        className='border-b border-slate-500 bg-deep-blue'
       >
         {children}
       </div>

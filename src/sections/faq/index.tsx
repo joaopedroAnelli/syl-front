@@ -33,7 +33,7 @@ export const FAQ: FC<FAQProps> = async ({}) => {
           <Accordion.Root key={question.id}>
             <Accordion.Header>
               <Accordion.Title>{question.attributes.question}</Accordion.Title>
-              <Accordion.Trigger />
+              <Accordion.Indicator />
             </Accordion.Header>
 
             <Accordion.Body>

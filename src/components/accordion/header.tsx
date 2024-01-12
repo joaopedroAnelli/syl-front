@@ -1,7 +1,18 @@
-import { FC, PropsWithChildren } from 'react';
+'use client';
 
+import { FC, PropsWithChildren, useContext } from 'react';
+import { AccordionContext } from './context';
 export type HeaderProps = PropsWithChildren<{}>;
 
 export const Header: FC<HeaderProps> = ({ children }) => {
-  return <div className='flex items-center justify-between'>{children}</div>;
+  const { setOpen } = useContext(AccordionContext);
+
+  return (
+    <button
+      onClick={() => setOpen((current) => !current)}
+      className='w-full flex h-16 items-center justify-between'
+    >
+      {children}
+    </button>
+  );
 };

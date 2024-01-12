@@ -13,7 +13,7 @@ describe('Accordion', () => {
       <Accordion.Root>
         <Accordion.Header>
           <Accordion.Title>Accordion</Accordion.Title>
-          <Accordion.Trigger />
+          <Accordion.Indicator />
         </Accordion.Header>
 
         <Accordion.Body>
