@@ -12,6 +12,7 @@ const config: Config = {
       colors: {
         'deep-blue': '#0D1530',
         'deep-blue-400': '#172556',
+        'deep-blue-600': '#08102a',
         'charcoal-grey-500': '#36454F',
         'charcoal-grey-400': '#68747B',
         gold: '#D4AF37',
@@ -21,7 +22,7 @@ const config: Config = {
     },
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
-      serif: ['Playfair Display', 'serif'],
+      serif: ['serif'],
     },
   },
   plugins: [],

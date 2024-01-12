@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { roboto } from '@/styles/fonts';
+import { roboto, playfairDisplay } from '@/styles/fonts';
 
 export const metadata: Metadata = {
   title:
@@ -15,8 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body className={roboto.className + ' min-h-dvh'}>{children}</body>
+    <html
+      lang='en'
+      className={`${roboto.variable} ${playfairDisplay.variable}`}
+    >
+      <body className='min-h-dvh'>{children}</body>
     </html>
   );
 }
