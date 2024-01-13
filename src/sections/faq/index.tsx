@@ -49,7 +49,7 @@ export const FAQ: FC<FAQProps> = async ({}) => {
         <CTAButton
           href='/form/location'
           buttonType='default'
-          className='w-full md:w-auto'
+          className='w-full md:w-auto md:inline'
         >
           {texts.faq.cta}
         </CTAButton>
