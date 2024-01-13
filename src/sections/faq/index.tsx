@@ -45,9 +45,15 @@ export const FAQ: FC<FAQProps> = async ({}) => {
         ))}
       </div>
 
-      <CTAButton type='button' buttonType='default'>
-        {texts.faq.cta}
-      </CTAButton>
+      <div className='text-center'>
+        <CTAButton
+          type='button'
+          buttonType='default'
+          className='w-full md:w-auto'
+        >
+          {texts.faq.cta}
+        </CTAButton>
+      </div>
     </section>
   );
 };

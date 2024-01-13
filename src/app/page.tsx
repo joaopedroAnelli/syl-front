@@ -1,3 +1,4 @@
+import { Footer } from '@/sections/Footer';
 import { Banner } from '@/sections/banner';
 import { FAQ } from '@/sections/faq';
 import { Hero } from '@/sections/hero';
@@ -12,6 +13,7 @@ export default function Home() {
       <Banner />
       <Testimonies />
       <FAQ />
+      <Footer />
     </div>
   );
 }
