@@ -18,4 +18,7 @@ export const buttonVariant = tv({
   },
 });
 
-export type ButtonVariantProps = Parameters<typeof buttonVariant>[0];
+export type ButtonVariantProps = {
+  buttonType?: 'default' | 'primary' | 'secondary';
+  fluid?: boolean;
+};
