@@ -66,7 +66,7 @@ export const Testimonies: FC<TestimoniesProps> = async ({}) => {
       </Carousel.Root>
 
       <div className='px-6 md:px-12 pb-6 md:pb-12 w-full md:w-auto'>
-        <CTAButton buttonType='primary' fluid>
+        <CTAButton href='/form/location' buttonType='primary' fluid>
           {texts.testimonies.cta}
         </CTAButton>
       </div>
