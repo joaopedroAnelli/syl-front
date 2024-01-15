@@ -22,8 +22,9 @@ const config: Config = {
       },
     },
     fontFamily: {
-      sans: ['Roboto', 'sans-serif'],
-      serif: ['serif'],
+      sans: ['var(--font-roboto)', 'sans-serif'],
+      serif: ['var(--font-playfair-display)', 'serif'],
+      mono: ['var(--font-ubuntu-mono)', 'monospace'],
     },
   },
   plugins: [],

@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { roboto, playfairDisplay } from '@/styles/fonts';
+import {
+  roboto,
+  playfairDisplay,
+  cutiveMono,
+  ubuntuMono,
+} from '@/styles/fonts';
 
 export const metadata: Metadata = {
   title:
@@ -17,7 +22,7 @@ export default function RootLayout({
   return (
     <html
       lang='en'
-      className={`${roboto.variable} ${playfairDisplay.variable}`}
+      className={`${roboto.variable} ${playfairDisplay.variable} ${cutiveMono.variable} ${ubuntuMono.variable}`}
     >
       <body className='min-h-dvh'>{children}</body>
     </html>
