@@ -2,10 +2,11 @@
 
 exports[`CTAButton should match snapshot 1`] = `
 <div>
-  <button
-    class="px-6 py-3 font-bold rounded-md text-lg bg-off-white text-charcoal-grey-500"
+  <a
+    class="px-6 py-3 font-bold rounded-md text-lg bg-off-white text-charcoal-grey-500 block text-center"
+    href="/"
   >
     Test
-  </button>
+  </a>
 </div>
 `;

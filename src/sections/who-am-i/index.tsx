@@ -45,7 +45,9 @@ export const WhoAmI: FC = async () => {
           </div>
         </div>
 
-        <CTAButton fluid>{texts.whoAmI.cta}</CTAButton>
+        <CTAButton href='/form/location' fluid>
+          {texts.whoAmI.cta}
+        </CTAButton>
       </section>
 
       {/* Desktop & Tablets */}
@@ -79,7 +81,7 @@ export const WhoAmI: FC = async () => {
             <MDXRemote source={richText?.attributes.value || ''} />
           </div>
 
-          <CTAButton>{texts.whoAmI.cta}</CTAButton>
+          <CTAButton href='/form/location'>{texts.whoAmI.cta}</CTAButton>
         </div>
       </section>
     </>

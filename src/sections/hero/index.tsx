@@ -41,7 +41,12 @@ export const Hero: FC<HeroProps> = async ({}) => {
           </Subtitle>
         </div>
 
-        <CTAButton buttonType='secondary' className='z-10 md:w-auto' fluid>
+        <CTAButton
+          href='/form/location'
+          buttonType='secondary'
+          className='z-10 md:w-auto'
+          fluid
+        >
           {texts.hero.cta}
         </CTAButton>
       </main>
