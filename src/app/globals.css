@@ -6,6 +6,7 @@
 }
 
 body {
+  font-family: @apply font-sans;
 }
 
 .mdx-wrapper p,
