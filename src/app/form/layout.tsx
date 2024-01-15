@@ -49,16 +49,17 @@ export default async function FormLayout({
   const titlesMap = Object.fromEntries(entriesWithFormRoute);
 
   return (
-    <div>
+    <div className='bg-off-white h-screen'>
       <FlowTitle
         flow={FLOW}
         textsMap={titlesMap}
         as='h1'
         color='deepBlue'
         size='md'
+        className='text-center p-6 md:p-12'
       />
-      {children}
-      <div className='flex justify-between p-6 md:p-12'>
+      <div className='p-6 md:p-12'>{children}</div>
+      <div className='flex justify-between p-6 md:p-12 fixed bottom-0 w-full'>
         <FlowButton
           flow={FLOW}
           isBack
