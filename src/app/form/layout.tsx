@@ -50,38 +50,40 @@ export default async function FormLayout({
   const titlesMap = Object.fromEntries(entriesWithFormRoute);
 
   return (
-    <div className='bg-off-white h-screen'>
-      <FlowTitle
-        flow={FLOW}
-        textsMap={titlesMap}
-        as='h1'
-        color='deepBlue'
-        size='md'
-        className='text-center p-6 md:p-12'
-      />
-      <div className='p-6 md:p-12'>{children}</div>
-      <div className='p-6 md:p-12 fixed bottom-0 w-full'>
-        <div className='text-center p-6 md:p-12'>
-          <FlowIndicator flow={FLOW} />
-        </div>
-        <div className='flex justify-between'>
-          <FlowButton
-            flow={FLOW}
-            isBack
-            className='flex justify-center items-center'
-          >
-            <ChevronLeftIcon className='w-5 h-5 mr-2' />
-            Back
-          </FlowButton>
+    <div className='bg-off-white min-h-dvh md:flex md:justify-center md:items-center md:flex-col'>
+      <div className='md:w-96 md:bg-white md:border md:rounded-lg md:shadow-md md:relative'>
+        <FlowTitle
+          flow={FLOW}
+          textsMap={titlesMap}
+          as='h2'
+          color='deepBlue'
+          size='md'
+          className='text-center p-6 md:p-12'
+        />
+        <div className='p-6 md:p-12'>{children}</div>
+        <div className='p-6 md:p-12 fixed md:relative bottom-0 left-0 w-full'>
+          <div className='text-center p-6 md:p-12'>
+            <FlowIndicator flow={FLOW} />
+          </div>
+          <div className='flex justify-between'>
+            <FlowButton
+              flow={FLOW}
+              isBack
+              className='flex justify-center items-center'
+            >
+              <ChevronLeftIcon className='w-5 h-5 mr-2' />
+              Back
+            </FlowButton>
 
-          <FlowButton
-            flow={FLOW}
-            buttonType='primary'
-            className='flex justify-center items-center'
-          >
-            Next
-            <ChevronRightIcon className='w-5 h-5 ml-2' />
-          </FlowButton>
+            <FlowButton
+              flow={FLOW}
+              buttonType='primary'
+              className='flex justify-center items-center'
+            >
+              Next
+              <ChevronRightIcon className='w-5 h-5 ml-2' />
+            </FlowButton>
+          </div>
         </div>
       </div>
     </div>
