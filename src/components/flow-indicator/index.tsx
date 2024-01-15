@@ -14,7 +14,7 @@ export const FlowIndicator: FC<FlowIndicatorProps> = ({ flow }) => {
   const index = flow.findIndex((f) => f.route.includes(pathname));
 
   return (
-    <div className='w-full flex justify-center items-center gap-6 md:gap-12'>
+    <div className='w-full flex justify-center items-center gap-6'>
       {flow.map((page, i) => (
         <div
           key={page.route}
