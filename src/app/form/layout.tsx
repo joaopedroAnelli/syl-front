@@ -4,6 +4,7 @@ import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid';
 import { fetchPageData } from '@/utils/fetchPageData';
 import { FormTexts } from './types';
 import { FlowTitle } from '@/components/flow-title';
+import { FlowIndicator } from '@/components/flow-indicator';
 
 const FLOW: FlowPage[] = [
   {
@@ -59,24 +60,29 @@ export default async function FormLayout({
         className='text-center p-6 md:p-12'
       />
       <div className='p-6 md:p-12'>{children}</div>
-      <div className='flex justify-between p-6 md:p-12 fixed bottom-0 w-full'>
-        <FlowButton
-          flow={FLOW}
-          isBack
-          className='flex justify-center items-center'
-        >
-          <ChevronLeftIcon className='w-5 h-5 mr-2' />
-          Back
-        </FlowButton>
+      <div className='p-6 md:p-12 fixed bottom-0 w-full'>
+        <div className='text-center p-6 md:p-12'>
+          <FlowIndicator flow={FLOW} />
+        </div>
+        <div className='flex justify-between'>
+          <FlowButton
+            flow={FLOW}
+            isBack
+            className='flex justify-center items-center'
+          >
+            <ChevronLeftIcon className='w-5 h-5 mr-2' />
+            Back
+          </FlowButton>
 
-        <FlowButton
-          flow={FLOW}
-          buttonType='primary'
-          className='flex justify-center items-center'
-        >
-          Next
-          <ChevronRightIcon className='w-5 h-5 ml-2' />
-        </FlowButton>
+          <FlowButton
+            flow={FLOW}
+            buttonType='primary'
+            className='flex justify-center items-center'
+          >
+            Next
+            <ChevronRightIcon className='w-5 h-5 ml-2' />
+          </FlowButton>
+        </div>
       </div>
     </div>
   );
