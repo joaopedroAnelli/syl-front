@@ -1,8 +1,6 @@
 'use client';
-import { useState, useContext } from 'react';
-import { PlaceInput } from '@/components/place-input';
+import { useContext } from 'react';
 import { Input } from '@/components/input';
-import { Place } from '@/components/place-input/types';
 import { FormContext } from '../context';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
@@ -53,15 +51,15 @@ export default function Details() {
             name='size'
             type='text'
             label='Size *'
-            onNumberFormat={(value) => {
+            onValueFormat={(value) => {
               const newValue = new Intl.NumberFormat('en-US').format(
                 Number(value)
               );
 
               return newValue;
             }}
-            onRevertNumberFormat={(value) => {
-              return Number(value.replace(/[^0-9.-]+/g, ''));
+            onRevertValueFormat={(value) => {
+              return value.replace(/[^0-9.-]+/g, '');
             }}
             iconRight={<p className='text-slate-400'>SQFT</p>}
           />
@@ -69,11 +67,11 @@ export default function Details() {
             name='offerPrice'
             type='text'
             label='Your Offer*'
-            onNumberFormat={(value) => {
+            onValueFormat={(value) => {
               return new Intl.NumberFormat('en-US').format(Number(value));
             }}
-            onRevertNumberFormat={(value) => {
-              return Number(value.replace(/[^0-9.-]+/g, ''));
+            onRevertValueFormat={(value) => {
+              return value.replace(/[^0-9.-]+/g, '');
             }}
             iconLeft={<p className='text-slate-400'>USD</p>}
           />

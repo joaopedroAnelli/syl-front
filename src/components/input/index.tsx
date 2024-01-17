@@ -15,16 +15,16 @@ type BaseProps =
       label: string;
       iconLeft?: JSX.Element;
       iconRight?: JSX.Element;
-      onNumberFormat?: (value: number) => string;
-      onRevertNumberFormat?: (value: string) => number;
+      onValueFormat?: (value: string) => string;
+      onRevertValueFormat?: (value: string) => string;
     }
   | {
       name: string;
       label: string;
       iconLeft?: JSX.Element;
       iconRight?: JSX.Element;
-      onNumberFormat: (value: number) => string;
-      onRevertNumberFormat: (value: string) => number;
+      onValueFormat: (value: string) => string;
+      onRevertValueFormat: (value: string) => string;
     };
 
 export type InputProps = ComponentProps<'input'> &
@@ -39,8 +39,8 @@ export const Input: FC<InputProps> = ({
   iconLeft,
   iconRight,
   readOnly,
-  onNumberFormat,
-  onRevertNumberFormat,
+  onValueFormat,
+  onRevertValueFormat,
   ...props
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -52,15 +52,15 @@ export const Input: FC<InputProps> = ({
       name: fieldName,
       ref: inputRef,
       getValue: (ref) => {
-        if (onRevertNumberFormat) {
-          return onRevertNumberFormat(ref.current.value);
+        if (onRevertValueFormat) {
+          return onRevertValueFormat(ref.current.value);
         }
 
         return ref.current.value;
       },
       setValue: (ref, value) => {
-        if (onNumberFormat && !isNaN(Number(value))) {
-          ref.current.value = onNumberFormat(Number(value));
+        if (onValueFormat) {
+          ref.current.value = onValueFormat(value);
           return;
         }
 
@@ -97,15 +97,15 @@ export const Input: FC<InputProps> = ({
           defaultValue={defaultValue}
           readOnly={readOnly}
           onChange={(e) => {
-            if (!onNumberFormat) {
+            if (!onValueFormat) {
               return;
             }
 
-            if (!onRevertNumberFormat) {
+            if (!onRevertValueFormat) {
               return;
             }
 
-            if (isNaN(onRevertNumberFormat(e.target.value))) {
+            if (isNaN(Number(onRevertValueFormat(e.target.value)))) {
               return;
             }
 
@@ -115,9 +115,7 @@ export const Input: FC<InputProps> = ({
               return;
             }
 
-            e.target.value = onNumberFormat(
-              onRevertNumberFormat(e.target.value)
-            );
+            e.target.value = onValueFormat(onRevertValueFormat(e.target.value));
           }}
           {...props}
         />
