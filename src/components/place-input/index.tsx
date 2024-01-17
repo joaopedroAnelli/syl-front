@@ -71,6 +71,7 @@ export const PlaceInput: FC<PlaceInputProps> = ({ onFindOptions, onError }) => {
 
   return (
     <Input
+      name='placeSearch'
       label='Place'
       placeholder='Tell us where your land is located'
       fluid

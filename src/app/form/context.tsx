@@ -17,9 +17,7 @@ const INITIAL_DATA = {
 export const FormContext = createContext<FormContextType>({
   data: INITIAL_DATA,
   setData: () => {},
-  isNextButtonDisabled: false,
-  setIsNextButtonDisabled: () => {},
-  pageValidatorRef: { current: () => ({ isValid: true }) },
+  pageFormRef: { current: null },
 });
 
 export type FormProviderProps = {};
@@ -28,17 +26,14 @@ export const FormProvider: FC<PropsWithChildren<FormProviderProps>> = ({
   children,
 }) => {
   const [data, setData] = useState(INITIAL_DATA);
-  const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(true);
-  const pageValidatorRef = useRef(() => ({ isValid: true }));
+  const pageFormRef = useRef(null);
 
   return (
     <FormContext.Provider
       value={{
         data,
         setData,
-        isNextButtonDisabled,
-        setIsNextButtonDisabled,
-        pageValidatorRef,
+        pageFormRef,
       }}
     >
       {children}

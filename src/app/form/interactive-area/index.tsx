@@ -42,14 +42,29 @@ export default function InteractiveArea({
   children: React.ReactNode;
   titlesMap: Record<string, string>;
 }) {
-  const { pageValidatorRef, isNextButtonDisabled } = useContext(FormContext);
+  const { pageFormRef, setData } = useContext(FormContext);
 
-  const goNextPage = () => {
-    const { isValid, errorMessage } = pageValidatorRef.current();
-
-    if (!isValid) {
-      throw new Error(errorMessage);
+  const submitForm = async () => {
+    if (!pageFormRef.current) {
+      return false;
     }
+
+    pageFormRef.current.submitForm();
+
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    const errors = pageFormRef.current.getErrors();
+
+    if (Object.keys(errors).length > 0) {
+      return false;
+    }
+
+    setData((currentData) => ({
+      ...currentData,
+      ...pageFormRef.current?.getData(),
+    }));
+
+    return true;
   };
 
   return (
@@ -81,8 +96,7 @@ export default function InteractiveArea({
             flow={FLOW}
             buttonType='primary'
             className='flex justify-center items-center'
-            disabled={isNextButtonDisabled}
-            onClick={goNextPage}
+            onValidate={submitForm}
           >
             Next
             <ChevronRightIcon className='w-5 h-5 ml-2' />

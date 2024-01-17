@@ -13,11 +13,15 @@ export const inputWrapperVariant = tv({
     fluid: {
       true: 'w-full',
     },
+    invalid: {
+      true: 'border-red-500',
+    },
   },
   defaultVariants: {
     inputType: 'default',
     fluid: false,
     readonly: false,
+    invalid: false,
   },
 });
 
@@ -42,3 +46,15 @@ export const inputVariant = tv({
 export type InputVariantProps = {
   color?: 'default';
 };
+
+export const labelVariant = tv({
+  base: 'text-slate-400',
+  variants: {
+    invalid: {
+      true: 'text-red-500',
+    },
+  },
+  defaultVariants: {
+    invalid: false,
+  },
+});

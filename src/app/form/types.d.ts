@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction } from 'react';
+import { FormHandles } from '@unform/core';
+import { Dispatch, SetStateAction, MutableRefObject } from 'react';
 
 export type FormTexts = {
   location: string;
@@ -26,20 +27,8 @@ export type FormSchema = {
   contact: FormContact;
 };
 
-export type ValidatorResponse =
-  | {
-      isValid: boolean;
-      errorMessage?: string;
-    }
-  | {
-      isValid: false;
-      errorMessage: string;
-    };
-
 export type FormContext = {
   data: FormSchema;
   setData: Dispatch<SetStateAction<FormSchema>>;
-  isNextButtonDisabled: boolean;
-  setIsNextButtonDisabled: Dispatch<SetStateAction<boolean>>;
-  pageValidatorRef: React.MutableRefObject<() => ValidatorResponse>;
+  pageFormRef: MutableRefObject<FormHandles | null>;
 };
