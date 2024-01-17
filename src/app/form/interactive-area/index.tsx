@@ -78,7 +78,7 @@ export default function InteractiveArea({
         className='text-center p-6 md:p-12'
       />
       <div className='p-6'>{children}</div>
-      <div className='p-6 fixed md:relative bottom-0 left-0 w-full'>
+      <div className='p-6 bottom-0 left-0 w-full'>
         <div className='text-center p-6'>
           <FlowIndicator flow={FLOW} />
         </div>
