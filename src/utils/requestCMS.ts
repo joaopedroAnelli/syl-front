@@ -1,13 +1,8 @@
 const requestCMS = async <ResponseDTO = any>(
   url: string
 ): Promise<ResponseDTO> => {
-  const res = await fetch(`${process.env.CMS_HOST}/api/${url}`, {
-    headers: {
-      Authorization: `Bearer ${process.env.CMS_API_KEY}`,
-    },
-    next: {
-      tags: ['static-content'],
-    },
+  const res = await fetch(`http://localhost:3000/api/cms/${url}`, {
+    credentials: 'same-origin',
   });
 
   return res.json();
