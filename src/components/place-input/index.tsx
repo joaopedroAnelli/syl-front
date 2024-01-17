@@ -1,5 +1,5 @@
 'use client';
-import { FC, useState, useCallback, ChangeEvent } from 'react';
+import { FC, useState, ChangeEvent } from 'react';
 import { Input } from '@/components/input';
 import { FetchPlacesResponse, Place } from './types';
 import { LoadingSpinner } from '@/components/loading-spinner';
@@ -14,29 +14,37 @@ export const PlaceInput: FC<PlaceInputProps> = ({ onFindOptions, onError }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
 
-  const fetchPlacesOptions =
-    useCallback(async (): Promise<FetchPlacesResponse> => {
-      setIsLoading(true);
-
-      const res = await fetch(`/api/places?input=${value}`);
-
-      if (!res.ok) {
-        setIsLoading(false);
-        return {
-          isSuccess: false,
-          error: new Error('Something went wrong fetching places options'),
-        };
-      }
-
-      const data = await res.json();
-
-      setIsLoading(false);
-
+  const fetchPlacesOptions = async (
+    input: string
+  ): Promise<FetchPlacesResponse> => {
+    if (!input) {
       return {
         isSuccess: true,
-        data,
+        data: [],
       };
-    }, [value]);
+    }
+
+    setIsLoading(true);
+
+    const res = await fetch(`/api/places?input=${input}`);
+
+    if (!res.ok) {
+      setIsLoading(false);
+      return {
+        isSuccess: false,
+        error: new Error('Something went wrong fetching places options'),
+      };
+    }
+
+    const data = await res.json();
+
+    setIsLoading(false);
+
+    return {
+      isSuccess: true,
+      data,
+    };
+  };
 
   const handleOnChange = (event: ChangeEvent) => {
     const target = event.target as HTMLInputElement;
@@ -48,7 +56,7 @@ export const PlaceInput: FC<PlaceInputProps> = ({ onFindOptions, onError }) => {
     }
 
     const newTimer = setTimeout(() => {
-      fetchPlacesOptions().then((response) => {
+      fetchPlacesOptions(target.value).then((response) => {
         if (response.isSuccess) {
           onFindOptions(response.data);
           return;
@@ -56,7 +64,7 @@ export const PlaceInput: FC<PlaceInputProps> = ({ onFindOptions, onError }) => {
 
         onError(response.error);
       });
-    }, 500);
+    }, 1000);
 
     setTimer(newTimer);
   };

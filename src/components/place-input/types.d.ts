@@ -1,6 +1,6 @@
 export type Place = {
   description: string;
-  place_id: string;
+  placeId: string;
 };
 
 export type FetchPlacesResponse =
