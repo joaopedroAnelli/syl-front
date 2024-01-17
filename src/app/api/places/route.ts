@@ -1,7 +1,8 @@
+import { NextRequest } from 'next/server';
 import { PlacesAutocompleteResponse } from './types';
 
-export async function GET(request: Request, response: Response) {
-  const { searchParams } = new URL(request.url);
+export async function GET(request: NextRequest, response: Response) {
+  const { searchParams } = request.nextUrl;
 
   const text = searchParams.get('input');
 
@@ -10,7 +11,6 @@ export async function GET(request: Request, response: Response) {
   }
 
   const googleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY;
-  console.log('🚀 ~ googleMapsApiKey:', googleMapsApiKey);
 
   const googleResponse = await fetch(
     `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${text}&key=${googleMapsApiKey}&locationbias=circle:5000000@38.772951, -103.283206`
@@ -18,8 +18,6 @@ export async function GET(request: Request, response: Response) {
 
   const googleResponseParsed: PlacesAutocompleteResponse =
     await googleResponse.json();
-
-  console.log('🚀 ~ googleResponseParsed:', googleResponseParsed);
 
   if (googleResponseParsed.status !== 'OK') {
     console.error('Google API error', googleResponseParsed.error_message);
