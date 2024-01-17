@@ -1,11 +1,10 @@
 'use client';
-import { useState, useEffect, useContext, useCallback, useRef } from 'react';
+import { useState, useContext } from 'react';
 import { PlaceInput } from '@/components/place-input';
 import { Input } from '@/components/input';
 import { Place } from '@/components/place-input/types';
 import { FormContext } from '../context';
 import { Form } from '@unform/web';
-import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
 export default function Location() {
