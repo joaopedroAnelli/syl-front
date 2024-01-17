@@ -48,7 +48,7 @@ export default function Location() {
   };
 
   return (
-    <div className='flex justify-center'>
+    <div>
       <Form
         ref={formRef}
         onSubmit={onSubmitForm}
@@ -56,7 +56,7 @@ export default function Location() {
         className='w-full'
         initialData={data}
       >
-        <div className='w-full md:w-96 flex flex-col items-center gap-6'>
+        <div className='w-full flex flex-wrap items-center justify-center gap-6'>
           {!showOtherFields && (
             <PlaceInput
               onError={(err) => {

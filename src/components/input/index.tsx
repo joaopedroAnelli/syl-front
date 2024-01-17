@@ -47,7 +47,7 @@ export const Input: FC<InputProps> = ({
   }, []);
 
   return (
-    <div className='flex flex-col w-full gap-3'>
+    <div className='flex flex-col w-full gap-3 md:w-80'>
       <span
         className={labelVariant({
           invalid: !!error,
@@ -75,7 +75,9 @@ export const Input: FC<InputProps> = ({
         {iconRight && <div>{iconRight}</div>}
       </div>
       <div>
-        {error && <span className='text-red-500 text-sm'>{error}</span>}
+        <span className={`text-red-500 text-sm ${!error ? 'invisible' : ''}`}>
+          {error || 'No error'}
+        </span>
       </div>
     </div>
   );
