@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, ComponentProps, useRef, useEffect } from 'react';
+import { FC, ComponentProps, useRef, useEffect, useState } from 'react';
 import {
   inputVariant,
   inputWrapperVariant,
@@ -8,13 +8,28 @@ import {
   labelVariant,
 } from '@/styles/input';
 import { useField } from '@unform/core';
+
+type BaseProps =
+  | {
+      name: string;
+      label: string;
+      iconLeft?: JSX.Element;
+      iconRight?: JSX.Element;
+      onNumberFormat?: (value: number) => string;
+      onRevertNumberFormat?: (value: string) => number;
+    }
+  | {
+      name: string;
+      label: string;
+      iconLeft?: JSX.Element;
+      iconRight?: JSX.Element;
+      onNumberFormat: (value: number) => string;
+      onRevertNumberFormat: (value: string) => number;
+    };
+
 export type InputProps = ComponentProps<'input'> &
-  InputWrapperVariantProps & {
-    name: string;
-    label: string;
-    iconLeft?: JSX.Element;
-    iconRight?: JSX.Element;
-  };
+  InputWrapperVariantProps &
+  BaseProps;
 
 export const Input: FC<InputProps> = ({
   name,
@@ -24,6 +39,8 @@ export const Input: FC<InputProps> = ({
   iconLeft,
   iconRight,
   readOnly,
+  onNumberFormat,
+  onRevertNumberFormat,
   ...props
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -35,9 +52,18 @@ export const Input: FC<InputProps> = ({
       name: fieldName,
       ref: inputRef,
       getValue: (ref) => {
+        if (onRevertNumberFormat) {
+          return onRevertNumberFormat(ref.current.value);
+        }
+
         return ref.current.value;
       },
       setValue: (ref, value) => {
+        if (onNumberFormat && !isNaN(Number(value))) {
+          ref.current.value = onNumberFormat(Number(value));
+          return;
+        }
+
         ref.current.value = value;
       },
       clearValue: (ref) => {
@@ -70,6 +96,29 @@ export const Input: FC<InputProps> = ({
           })}
           defaultValue={defaultValue}
           readOnly={readOnly}
+          onChange={(e) => {
+            if (!onNumberFormat) {
+              return;
+            }
+
+            if (!onRevertNumberFormat) {
+              return;
+            }
+
+            if (isNaN(onRevertNumberFormat(e.target.value))) {
+              return;
+            }
+
+            const lastChar = e.target.value[e.target.value.length - 1];
+
+            if (isNaN(Number(lastChar))) {
+              return;
+            }
+
+            e.target.value = onNumberFormat(
+              onRevertNumberFormat(e.target.value)
+            );
+          }}
           {...props}
         />
         {iconRight && <div>{iconRight}</div>}

@@ -51,30 +51,14 @@ export default function Details() {
         <div className='w-full flex flex-wrap items-center justify-center gap-6'>
           <Input
             name='size'
-            type='text'
+            type='number'
             label='Size *'
-            onNumberFormat={(value) => {
-              const newValue = new Intl.NumberFormat('en-US').format(
-                Number(value)
-              );
-
-              return newValue;
-            }}
-            onRevertNumberFormat={(value) => {
-              return Number(value.replace(/[^0-9.-]+/g, ''));
-            }}
             iconRight={<p className='text-slate-400'>SQFT</p>}
           />
           <Input
             name='offerPrice'
-            type='text'
+            type='number'
             label='Your Offer*'
-            onNumberFormat={(value) => {
-              return new Intl.NumberFormat('en-US').format(Number(value));
-            }}
-            onRevertNumberFormat={(value) => {
-              return Number(value.replace(/[^0-9.-]+/g, ''));
-            }}
             iconLeft={<p className='text-slate-400'>USD</p>}
           />
           <TextArea
