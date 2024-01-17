@@ -6,6 +6,7 @@ import {
   cutiveMono,
   ubuntuMono,
 } from '@/styles/fonts';
+import StyledComponentsRegistry from '@/lib/registry';
 
 export const metadata: Metadata = {
   title:
@@ -24,7 +25,9 @@ export default function RootLayout({
       lang='en'
       className={`${roboto.variable} ${playfairDisplay.variable} ${cutiveMono.variable} ${ubuntuMono.variable}`}
     >
-      <body className='min-h-dvh'>{children}</body>
+      <body className='min-h-dvh'>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      </body>
     </html>
   );
 }
