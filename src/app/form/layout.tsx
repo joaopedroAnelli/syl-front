@@ -20,7 +20,7 @@ export default async function FormLayout({
   const titlesMap = Object.fromEntries(entriesWithFormRoute);
 
   return (
-    <div className='bg-off-white min-h-dvh md:flex md:justify-center md:items-center md:flex-col md:gap-6'>
+    <div className='flex flex-col bg-off-white min-h-dvh md:flex md:justify-center md:items-center md:flex-col md:gap-6'>
       <FormProvider>
         <InteractiveArea titlesMap={titlesMap}>{children}</InteractiveArea>
       </FormProvider>

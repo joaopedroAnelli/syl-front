@@ -68,7 +68,7 @@ export default function InteractiveArea({
   };
 
   return (
-    <div className='md:bg-white md:border md:rounded-lg md:shadow-md md:relative md:max-w-[60dvw]'>
+    <div className='flex flex-1 flex-col h-full md:h-auto md:bg-white md:border md:rounded-lg md:shadow-md md:relative md:max-w-[60dvw]'>
       <FlowTitle
         flow={FLOW}
         textsMap={titlesMap}
@@ -77,7 +77,7 @@ export default function InteractiveArea({
         size='md'
         className='text-center p-6 md:p-12'
       />
-      <div className='p-6'>{children}</div>
+      <div className='p-6 flex-1'>{children}</div>
       <div className='p-6 bottom-0 left-0 w-full'>
         <div className='text-center p-6'>
           <FlowIndicator flow={FLOW} />
