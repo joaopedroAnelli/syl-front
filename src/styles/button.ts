@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 export const buttonVariant = tv({
-  base: 'px-6 py-3 font-bold rounded-md',
+  base: 'px-6 py-3 font-bold rounded-md disabled:opacity-50 disabled:cursor-not-allowed',
   variants: {
     buttonType: {
       default: 'bg-off-white text-charcoal-grey-500',
