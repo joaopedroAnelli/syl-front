@@ -12,6 +12,8 @@ import {
 import { FlowTitle } from '@/components/flow-title';
 import { FlowIndicator } from '@/components/flow-indicator';
 import { usePathname } from 'next/navigation';
+import { SubmitStatus } from '../types';
+import { LoadingSpinner } from '@/components/loading-spinner';
 
 const FLOW: FlowPage[] = [
   {
@@ -48,11 +50,25 @@ export default function InteractiveArea({
   children: React.ReactNode;
   titlesMap: Record<string, string>;
 }) {
-  const { pageFormRef, setData } = useContext(FormContext);
+  const {
+    pageFormRef,
+    setData,
+    submitStatus,
+    submitForm: submitFinalForm,
+  } = useContext(FormContext);
 
   const pathname = usePathname();
 
+  const isSecondToLastFlow = pathname === FLOW[FLOW.length - 2].route;
+
+  const isLastFlow = pathname === FLOW[FLOW.length - 1].route;
+
   const submitForm = async () => {
+    if (isSecondToLastFlow) {
+      const success = await submitFinalForm();
+      return success;
+    }
+
     if (!pageFormRef.current) {
       return false;
     }
@@ -74,10 +90,6 @@ export default function InteractiveArea({
 
     return true;
   };
-
-  const isSecondToLastFlow = pathname === FLOW[FLOW.length - 2].route;
-
-  const isLastFlow = pathname === FLOW[FLOW.length - 1].route;
 
   return (
     <div className='flex flex-1 flex-col h-full md:h-auto md:bg-white md:border md:rounded-lg md:shadow-md md:relative md:max-w-[60dvw]'>
@@ -110,11 +122,17 @@ export default function InteractiveArea({
             className='flex justify-center items-center'
             onValidate={submitForm}
           >
-            {isSecondToLastFlow ? 'Submit' : 'Next'}
-            {isSecondToLastFlow ? (
-              <PaperAirplaneIcon className='w-5 h-5 ml-2' />
+            {submitStatus === SubmitStatus.LOADING ? (
+              <LoadingSpinner size={16} color='white' />
             ) : (
-              <ChevronRightIcon className='w-5 h-5 ml-2' />
+              <>
+                {isSecondToLastFlow ? 'Submit' : 'Next'}
+                {isSecondToLastFlow ? (
+                  <PaperAirplaneIcon className='w-5 h-5 ml-2' />
+                ) : (
+                  <ChevronRightIcon className='w-5 h-5 ml-2' />
+                )}
+              </>
             )}
           </FlowButton>
         </div>

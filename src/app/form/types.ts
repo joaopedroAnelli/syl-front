@@ -27,8 +27,17 @@ export type FormSchema = {
   contact: FormContact;
 };
 
+export enum SubmitStatus {
+  IDLE = 'idle',
+  LOADING = 'loading',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}
+
 export type FormContext = {
   data: FormSchema;
   setData: Dispatch<SetStateAction<FormSchema>>;
   pageFormRef: MutableRefObject<FormHandles | null>;
+  submitForm: () => Promise<boolean>;
+  submitStatus: SubmitStatus;
 };
