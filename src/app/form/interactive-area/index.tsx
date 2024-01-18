@@ -1,11 +1,17 @@
 'use client';
+
 import { useContext } from 'react';
 import { FormContext } from '../context';
 import { FlowButton } from '@/components/flow-button';
 import { FlowPage } from '@/types/flow';
-import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid';
+import {
+  ChevronRightIcon,
+  ChevronLeftIcon,
+  PaperAirplaneIcon,
+} from '@heroicons/react/24/outline';
 import { FlowTitle } from '@/components/flow-title';
 import { FlowIndicator } from '@/components/flow-indicator';
+import { usePathname } from 'next/navigation';
 
 const FLOW: FlowPage[] = [
   {
@@ -44,6 +50,8 @@ export default function InteractiveArea({
 }) {
   const { pageFormRef, setData } = useContext(FormContext);
 
+  const pathname = usePathname();
+
   const submitForm = async () => {
     if (!pageFormRef.current) {
       return false;
@@ -66,6 +74,10 @@ export default function InteractiveArea({
 
     return true;
   };
+
+  const isSecondToLastFlow = pathname === FLOW[FLOW.length - 2].route;
+
+  const isLastFlow = pathname === FLOW[FLOW.length - 1].route;
 
   return (
     <div className='flex flex-1 flex-col h-full md:h-auto md:bg-white md:border md:rounded-lg md:shadow-md md:relative md:max-w-[60dvw]'>
@@ -98,8 +110,12 @@ export default function InteractiveArea({
             className='flex justify-center items-center'
             onValidate={submitForm}
           >
-            Next
-            <ChevronRightIcon className='w-5 h-5 ml-2' />
+            {isSecondToLastFlow ? 'Submit' : 'Next'}
+            {isSecondToLastFlow ? (
+              <PaperAirplaneIcon className='w-5 h-5 ml-2' />
+            ) : (
+              <ChevronRightIcon className='w-5 h-5 ml-2' />
+            )}
           </FlowButton>
         </div>
       </div>
