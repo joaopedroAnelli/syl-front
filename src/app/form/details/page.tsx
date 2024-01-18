@@ -5,8 +5,11 @@ import { FormContext } from '../context';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { TextArea } from '@/components/textarea';
+import useCheckLocation from '../hooks/useCheckLocation';
 
 export default function Details() {
+  useCheckLocation();
+
   const { pageFormRef: formRef, data } = useContext(FormContext);
 
   const onSubmitForm = (data: Record<string, any>) => {

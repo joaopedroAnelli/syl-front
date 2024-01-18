@@ -5,8 +5,11 @@ import { FormContext } from '../context';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { Scope } from '@unform/core';
+import useCheckLocation from '../hooks/useCheckLocation';
 
 export default function Contact() {
+  useCheckLocation();
+
   const { pageFormRef: formRef, data } = useContext(FormContext);
 
   const onSubmitForm = (data: Record<string, any>) => {
@@ -20,8 +23,7 @@ export default function Contact() {
 
       const schema = Yup.object().shape({
         contact: Yup.object().shape({
-          firstName: Yup.string().required(),
-          lastName: Yup.string().required(),
+          name: Yup.string().required(),
           email: Yup.string().email().required(),
           phone: Yup.string().optional(),
         }),
@@ -73,8 +75,7 @@ export default function Contact() {
       >
         <div className='w-full flex flex-wrap items-center justify-center gap-6'>
           <Scope path='contact'>
-            <Input label='First Name*' name='firstName' />
-            <Input label='Last Name*' name='lastName' />
+            <Input label='Your Name*' name='name' />
             <Input label='Email*' name='email' type='email' />
             <Input
               label='Phone'
