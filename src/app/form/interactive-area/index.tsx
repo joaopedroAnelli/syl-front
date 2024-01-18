@@ -92,7 +92,7 @@ export default function InteractiveArea({
   };
 
   return (
-    <div className='flex flex-1 flex-col h-full md:h-auto md:bg-white md:border md:rounded-lg md:shadow-md md:relative md:max-w-[60dvw]'>
+    <div className='flex flex-1 flex-col h-full md:h-auto md:bg-white md:border md:rounded-lg md:shadow-sm md:relative md:max-w-[60dvw]'>
       {!isLastFlow && (
         <FlowTitle
           flow={FLOW}

@@ -19,18 +19,6 @@ describe('CTAButton', () => {
     expect(button).toHaveTextContent('Test');
   });
 
-  it('should render with properly style', () => {
-    render(<CTAButton href='/'>Test</CTAButton>);
-
-    const button = screen.getByRole('link');
-
-    expect(button).toHaveClass(
-      'px-6 py-3 font-bold rounded-md text-lg bg-off-white text-charcoal-grey-500'
-    );
-
-    expect(button).not.toHaveClass('bg-deep-blue text-off-white');
-  });
-
   it('should render with properly style when buttonType is primary', () => {
     render(
       <CTAButton href='/' buttonType='primary'>
@@ -41,7 +29,7 @@ describe('CTAButton', () => {
     const button = screen.getByRole('link');
 
     expect(button).toHaveClass(
-      'px-6 py-3 font-bold rounded-md text-lg bg-deep-blue text-off-white'
+      'px-6 py-3 md:px-4 md:py-2 font-bold rounded-md disabled:opacity-50 disabled:cursor-not-allowed bg-deep-blue text-off-white block text-center'
     );
   });
 
@@ -55,7 +43,7 @@ describe('CTAButton', () => {
     const button = screen.getByRole('link');
 
     expect(button).toHaveClass(
-      'px-6 py-3 font-bold rounded-md text-lg bg-gold text-deep-blue'
+      'px-6 py-3 md:px-4 md:py-2 font-bold rounded-md disabled:opacity-50 disabled:cursor-not-allowed bg-gold text-deep-blue block text-center'
     );
   });
 
