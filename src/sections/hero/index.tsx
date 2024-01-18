@@ -19,7 +19,7 @@ export const Hero: FC<HeroProps> = async ({}) => {
   );
 
   return (
-    <section className='flex flex-col h-[95dvh] relative md:h-[80dvh]'>
+    <section className='flex flex-col h-[85vh] relative md:h-[80vh]'>
       {heroImage && (
         <CMSImage
           alt={heroImage.attributes.alternativeText}

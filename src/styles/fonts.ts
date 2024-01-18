@@ -1,4 +1,9 @@
-import { Roboto, Playfair_Display } from 'next/font/google';
+import {
+  Roboto,
+  Playfair_Display,
+  Cutive_Mono,
+  Ubuntu_Mono,
+} from 'next/font/google';
 
 export const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -11,4 +16,18 @@ export const roboto = Roboto({
   display: 'swap',
   weight: '400',
   variable: '--font-roboto',
+});
+
+export const cutiveMono = Cutive_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400',
+  variable: '--font-cutive-mono',
+});
+
+export const ubuntuMono = Ubuntu_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400',
+  variable: '--font-ubuntu-mono',
 });

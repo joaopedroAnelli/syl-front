@@ -6,6 +6,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/sections/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/styles/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -21,8 +22,9 @@ const config: Config = {
       },
     },
     fontFamily: {
-      sans: ['Roboto', 'sans-serif'],
-      serif: ['serif'],
+      sans: ['var(--font-roboto)', 'sans-serif'],
+      serif: ['var(--font-playfair-display)', 'serif'],
+      mono: ['var(--font-ubuntu-mono)', 'monospace'],
     },
   },
   plugins: [],
