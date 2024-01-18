@@ -93,50 +93,54 @@ export default function InteractiveArea({
 
   return (
     <div className='flex flex-1 flex-col h-full md:h-auto md:bg-white md:border md:rounded-lg md:shadow-md md:relative md:max-w-[60dvw]'>
-      <FlowTitle
-        flow={FLOW}
-        textsMap={titlesMap}
-        as='h2'
-        color='deepBlue'
-        size='md'
-        className='text-center p-6 md:p-12'
-      />
-      <div className='p-6 flex-1'>{children}</div>
-      <div className='p-6 bottom-0 left-0 w-full'>
-        <div className='text-center p-6'>
-          <FlowIndicator flow={FLOW} />
-        </div>
-        <div className='flex justify-between'>
-          <FlowButton
-            flow={FLOW}
-            isBack
-            className='flex justify-center items-center'
-          >
-            <ChevronLeftIcon className='w-5 h-5 mr-2' />
-            Back
-          </FlowButton>
+      {!isLastFlow && (
+        <FlowTitle
+          flow={FLOW}
+          textsMap={titlesMap}
+          as='h2'
+          color='deepBlue'
+          size='md'
+          className='text-center p-6 md:p-12'
+        />
+      )}
+      <div className='p-6 flex-1 flex'>{children}</div>
+      {!isLastFlow && (
+        <div className='p-6 bottom-0 left-0 w-full'>
+          <div className='text-center p-6'>
+            <FlowIndicator flow={FLOW} />
+          </div>
+          <div className='flex justify-between'>
+            <FlowButton
+              flow={FLOW}
+              isBack
+              className='flex justify-center items-center'
+            >
+              <ChevronLeftIcon className='w-5 h-5 mr-2' />
+              Back
+            </FlowButton>
 
-          <FlowButton
-            flow={FLOW}
-            buttonType='primary'
-            className='flex justify-center items-center'
-            onValidate={submitForm}
-          >
-            {submitStatus === SubmitStatus.LOADING ? (
-              <LoadingSpinner size={16} color='white' />
-            ) : (
-              <>
-                {isSecondToLastFlow ? 'Submit' : 'Next'}
-                {isSecondToLastFlow ? (
-                  <PaperAirplaneIcon className='w-5 h-5 ml-2' />
-                ) : (
-                  <ChevronRightIcon className='w-5 h-5 ml-2' />
-                )}
-              </>
-            )}
-          </FlowButton>
+            <FlowButton
+              flow={FLOW}
+              buttonType='primary'
+              className='flex justify-center items-center'
+              onValidate={submitForm}
+            >
+              {submitStatus === SubmitStatus.LOADING ? (
+                <LoadingSpinner size={16} color='white' />
+              ) : (
+                <>
+                  {isSecondToLastFlow ? 'Submit' : 'Next'}
+                  {isSecondToLastFlow ? (
+                    <PaperAirplaneIcon className='w-5 h-5 ml-2' />
+                  ) : (
+                    <ChevronRightIcon className='w-5 h-5 ml-2' />
+                  )}
+                </>
+              )}
+            </FlowButton>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
