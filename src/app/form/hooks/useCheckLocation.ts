@@ -9,8 +9,8 @@ export default function useCheckLocation() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!data.address) {
+    if (!data.city) {
       router.push('/form/location');
     }
-  }, [data.address, router]);
+  }, [data.city, router]);
 }
