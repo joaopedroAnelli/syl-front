@@ -3,13 +3,14 @@ const requestCMS = async <ResponseDTO = any>(
   options?: RequestInit
 ): Promise<ResponseDTO> => {
   const res = await fetch(`${process.env.CMS_HOST}/api/${url}`, {
+    ...options,
     headers: {
       Authorization: `Bearer ${process.env.CMS_API_KEY}`,
+      ...options?.headers,
     },
     next: {
-      tags: ['static-content'],
+      tags: ['static-content', ...(options?.next?.tags ?? [])],
     },
-    ...options,
   });
 
   if (!res.ok) {
