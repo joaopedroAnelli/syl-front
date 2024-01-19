@@ -1,10 +1,10 @@
 import { tv } from 'tailwind-variants';
 
 export const inputWrapperVariant = tv({
-  base: 'flex gap-3 p-3 md:gap-2 md:p-2 rounded-md border border-charcoal-slate-700 font-mono bg-white dark:bg-black focus-within:border-deep-blue dark:focus-within:border-white',
+  base: 'flex gap-3 p-3 md:gap-2 md:p-2 rounded-md border border-charcoal-slate-700 font-mono bg-white  focus-within:border-deep-blue ',
   variants: {
     readonly: {
-      true: 'bg-gray-100 dark:bg-charcoal-grey-800',
+      true: 'bg-gray-100',
       false: '',
     },
     color: {
@@ -35,7 +35,7 @@ export const inputVariant = tv({
   base: 'flex-1 bg-transparent outline-none',
   variants: {
     color: {
-      default: 'text-charcoal-grey-900 dark:text-white',
+      default: 'text-charcoal-grey-900 ',
     },
   },
   defaultVariants: {
