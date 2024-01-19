@@ -70,7 +70,7 @@ export const Input: FC<InputProps> = ({
         ref.current.value = '';
       },
     });
-  }, []);
+  }, [fieldName, onRevertValueFormat, onValueFormat, registerField]);
 
   return (
     <div className='flex flex-col w-full gap-3 md:w-80'>

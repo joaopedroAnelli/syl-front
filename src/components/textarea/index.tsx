@@ -45,7 +45,7 @@ export const TextArea: FC<TextAreaProps> = ({
         ref.current.value = '';
       },
     });
-  }, []);
+  }, [fieldName, registerField]);
 
   return (
     <div className='flex flex-col w-full gap-3'>
