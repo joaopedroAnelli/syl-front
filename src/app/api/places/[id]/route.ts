@@ -25,7 +25,6 @@ export async function GET(
   const { result } = googleResponseParsed;
 
   const addressComponents = result.address_components;
-  console.log('🚀 ~ addressComponents:', addressComponents);
 
   const streetAddress = addressComponents.find((component) =>
     component.types.includes('route')
