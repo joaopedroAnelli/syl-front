@@ -25,29 +25,32 @@ export async function GET(
   const { result } = googleResponseParsed;
 
   const addressComponents = result.address_components;
+  console.log('🚀 ~ addressComponents:', addressComponents);
 
   const streetAddress = addressComponents.find((component) =>
-    component.types.includes('street_address')
+    component.types.includes('route')
   );
 
   const postalCode = addressComponents.find((component) =>
     component.types.includes('postal_code')
   );
 
-  const locality = addressComponents.find((component) =>
-    component.types.includes('locality')
+  const state = addressComponents.find((component) =>
+    component.types.includes('administrative_area_level_1')
   );
 
-  const sublocality = addressComponents.find((component) =>
-    component.types.includes('sublocality')
+  const city = addressComponents.find(
+    (component) =>
+      component.types.includes('locality') ||
+      component.types.includes('administrative_area_level_2')
   );
 
   return new Response(
     JSON.stringify({
       streetAddress: streetAddress?.long_name,
       postalCode: postalCode?.long_name,
-      locality: locality?.long_name,
-      sublocality: sublocality?.long_name,
+      state: state?.short_name,
+      city: city?.long_name,
     }),
     {
       headers: {

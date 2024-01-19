@@ -1,5 +1,5 @@
 'use client';
-import { useState, useContext } from 'react';
+import { useState, useContext, useCallback, useEffect } from 'react';
 import { PlaceInput } from '@/components/place-input';
 import { Input } from '@/components/input';
 import { Place } from '@/components/place-input/types';
@@ -7,17 +7,20 @@ import { FormContext } from '../context';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { Toast } from '@/components/toast';
+import { LoadingSpinner } from '@/components/loading-spinner';
 
 export default function Location() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [showOtherFields, setShowOtherFields] = useState(false);
 
   const [places, setPlaces] = useState<Place[]>([]);
 
   const [placeId, setPlaceId] = useState<string | null>(null);
 
-  const { pageFormRef: formRef, data } = useContext(FormContext);
+  const { pageFormRef: formRef, data, setData } = useContext(FormContext);
 
-  const [errorInPlaceInput, setErrorInPlaceInput] = useState(true);
+  const [errorInPlaceInput, setErrorInPlaceInput] = useState(false);
 
   const onSubmitForm = (data: Record<string, any>) => {
     if (!formRef.current) {
@@ -29,10 +32,10 @@ export default function Location() {
       formRef.current.setErrors({});
 
       const schema = Yup.object().shape({
-        address: Yup.string().required(),
         city: Yup.string().required(),
         state: Yup.string().required(),
         zip: Yup.string().optional(),
+        address: Yup.string().optional(),
       });
 
       schema.validateSync(data, {
@@ -49,6 +52,55 @@ export default function Location() {
     }
   };
 
+  const fetchPlaceDetails = useCallback(async () => {
+    if (!placeId) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(
+        `/api/places/${encodeURIComponent(placeId)}`
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.status);
+      }
+
+      const { streetAddress, postalCode, state, city } = data;
+
+      setData((currentData) => ({
+        ...currentData,
+        address: streetAddress,
+        city,
+        state,
+        zip: postalCode,
+      }));
+
+      setShowOtherFields(true);
+    } catch (err) {
+      console.error(err);
+      setErrorInPlaceInput(true);
+    } finally {
+      setIsLoading(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [placeId]);
+
+  useEffect(() => {
+    fetchPlaceDetails();
+  }, [fetchPlaceDetails]);
+
+  if (isLoading) {
+    return (
+      <div className='flex-1 flex items-center justify-center'>
+        <LoadingSpinner size={24} color='#172556' />
+      </div>
+    );
+  }
+
   return (
     <div className='flex-1'>
       <Form
@@ -58,7 +110,7 @@ export default function Location() {
         className='w-full'
         initialData={data}
       >
-        <div className='w-full flex flex-wrap items-center justify-center gap-6'>
+        <div className='flex-1 flex flex-wrap items-center justify-center gap-6'>
           {!showOtherFields && (
             <PlaceInput
               onError={(err) => {
@@ -90,10 +142,10 @@ export default function Location() {
           )}
           {showOtherFields && (
             <>
-              <Input name='address' type='text' label='Address *' />
               <Input name='city' type='text' label='City *' />
               <Input name='state' type='text' label='State *' />
               <Input name='zip' type='text' inputMode='numeric' label='Zip' />
+              <Input name='address' type='text' label='Address' />
             </>
           )}
         </div>

@@ -15,7 +15,14 @@ export type PlacesAutocompleteResponse = {
   error_message?: string;
 };
 
-type PlaceType = 'street_address' | 'postal_code' | 'locality' | 'sublocality';
+type PlaceType =
+  | 'street_address'
+  | 'postal_code'
+  | 'locality'
+  | 'sublocality'
+  | 'administrative_area_level_1'
+  | 'administrative_area_level_2'
+  | 'route';
 
 type AddressComponent = {
   long_name: string;
