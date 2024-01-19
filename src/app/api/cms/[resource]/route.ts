@@ -1,4 +1,3 @@
-import requestCMS from '@/utils/requestCMS';
 import { NextRequest } from 'next/server';
 
 type GetParams = {
