@@ -54,6 +54,7 @@ export default function Details() {
             name='size'
             type='text'
             label='Size *'
+            inputMode='numeric'
             onValueFormat={(value) => {
               const newValue = new Intl.NumberFormat('en-US').format(
                 Number(value)
@@ -69,6 +70,7 @@ export default function Details() {
           <Input
             name='offerPrice'
             type='text'
+            inputMode='numeric'
             label='Your Offer*'
             onValueFormat={(value) => {
               return new Intl.NumberFormat('en-US').format(Number(value));

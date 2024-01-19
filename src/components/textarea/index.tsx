@@ -67,7 +67,7 @@ export const TextArea: FC<TextAreaProps> = ({
         <textarea
           ref={inputRef}
           className={inputVariant({
-            className,
+            className: `min-h-28 ${className}`,
           })}
           defaultValue={defaultValue}
           readOnly={readOnly}
