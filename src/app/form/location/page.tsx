@@ -6,15 +6,18 @@ import { Place } from '@/components/place-input/types';
 import { FormContext } from '../context';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
+import { Toast } from '@/components/toast';
 
 export default function Location() {
-  const [showOtherFields, setShowOtherFields] = useState(true);
+  const [showOtherFields, setShowOtherFields] = useState(false);
 
   const [places, setPlaces] = useState<Place[]>([]);
 
   const [placeId, setPlaceId] = useState<string | null>(null);
 
   const { pageFormRef: formRef, data } = useContext(FormContext);
+
+  const [errorInPlaceInput, setErrorInPlaceInput] = useState(true);
 
   const onSubmitForm = (data: Record<string, any>) => {
     if (!formRef.current) {
@@ -47,7 +50,7 @@ export default function Location() {
   };
 
   return (
-    <div>
+    <div className='flex-1'>
       <Form
         ref={formRef}
         onSubmit={onSubmitForm}
@@ -95,6 +98,14 @@ export default function Location() {
           )}
         </div>
       </Form>
+
+      <Toast
+        type='info'
+        isOpen={errorInPlaceInput}
+        onOpenChange={setErrorInPlaceInput}
+        title='Error while searching for places'
+        description='Something went wrong when searching for places. Please fill the fields manually.'
+      />
     </div>
   );
 }
