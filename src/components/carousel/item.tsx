@@ -30,7 +30,6 @@ export const CarouselItem: FC<PropsWithChildren<CarouselItemProps>> = ({
 
     containerRef.current.scrollIntoView({
       behavior: 'smooth',
-      block: 'center',
       inline: 'center',
     });
   }, [active, id]);

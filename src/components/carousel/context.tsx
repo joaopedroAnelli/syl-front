@@ -44,13 +44,23 @@ export const CarouselContextProvider: FC<
   const itemsRef = useRef<(string | number)[]>([]);
 
   const showNext = () => {
-    setActiveIndex((prev) => (prev + 1) % itemsRef.current.length);
+    setActiveIndex((prev) => {
+      if (prev === itemsRef.current.length - 1) {
+        return prev;
+      }
+
+      return prev + 1;
+    });
   };
 
   const showPrev = () => {
-    setActiveIndex(
-      (prev) => (prev - 1 + itemsRef.current.length) % itemsRef.current.length
-    );
+    setActiveIndex((prev) => {
+      if (prev === 0) {
+        return prev;
+      }
+
+      return prev - 1;
+    });
   };
 
   const registerItem = (id: string | number) => {
