@@ -9,6 +9,7 @@ const requestCMS = async <ResponseDTO = any>(
     next: {
       tags: ['static-content'],
     },
+    ...options,
   });
 
   if (!res.ok) {

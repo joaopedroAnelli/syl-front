@@ -79,7 +79,6 @@ export const PlaceInput: FC<PlaceInputProps> = ({ onFindOptions, onError }) => {
       className='relative'
       value={value}
       onChange={handleOnChange}
-      readOnly={isLoading}
       iconRight={
         isLoading ? <LoadingSpinner color='#0D1530' size={16} /> : undefined
       }
