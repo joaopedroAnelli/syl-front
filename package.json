@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "e2e": "cypress open",
+    "e2e:ci": "cypress run"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
