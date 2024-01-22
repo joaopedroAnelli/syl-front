@@ -8,7 +8,7 @@ describe('Home Page', () => {
     );
   });
 
-  it('should open form when click on sell now button', () => {
+  it('should open form when click on CTA', () => {
     cy.visit('/');
 
     cy.get('[data-cy=hero-cta]').click();
