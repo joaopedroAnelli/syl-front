@@ -46,6 +46,7 @@ export const Hero: FC<HeroProps> = async ({}) => {
           buttonType='secondary'
           className='z-10 md:w-auto'
           fluid
+          data-cy='hero-cta'
         >
           {texts.hero.cta}
         </CTAButton>
