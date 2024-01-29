@@ -27,7 +27,7 @@ export const FlowButton: FC<FlowButtonProps> = ({
 }) => {
   const pathname = usePathname();
 
-  const { push } = useRouter();
+  const { push, prefetch } = useRouter();
 
   const index = flow.findIndex((f) => f.route.includes(pathname));
 
@@ -46,6 +46,12 @@ export const FlowButton: FC<FlowButtonProps> = ({
 
     push(next ? next.route : '/');
   };
+
+  useEffect(() => {
+    if (next) {
+      prefetch(next.route);
+    }
+  }, [next, prefetch]);
 
   return (
     <Button {...props} onClick={handleClick}>
