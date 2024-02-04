@@ -1,31 +1,26 @@
 import { FC } from 'react';
 import { Avatar } from '@/components/avatar';
-import { fetchPageData } from '@/utils/fetchPageData';
 import { Header } from '@/components/header';
-import { Texts } from './types';
 import { CTAButton } from '@/components/cta';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import CMSImage from '@/components/cms-image';
+import MePic from '~/public/images/me.png';
+import Image from 'next/image';
 
 export const WhoAmI: FC = async () => {
-  const pageData = await fetchPageData<Texts>('home');
+  const richText = `For over 20 years, he has been engaged in various segments such as **construction**, **agribusiness** and **real estate development**. It has more than **20 million dollars** in projects successfully executed in the United States and Brazil.
 
-  const { texts, images, rich_texts } = pageData;
-
-  const avatarImage = images?.data.find(
-    (image) => image.attributes.name === 'who-am-i'
-  );
-
-  const richText = rich_texts?.data.find(
-    (richText) => richText.attributes.key === 'who-am-i'
-  );
+  - Extensive experience in the real estate market 
+  - Creator of global companies specializing in real estate development 
+  - Focus on building homes in the Florida region
+  - Great experience in the market of popular and luxury homes. 
+  - Expertise in projects for the luxury market, with developments in Bela Collina, Lake Nona and Downtown Orlando`;
 
   return (
     <>
       {/* Mobile */}
       <section className='flex flex-col gap-6 items-center p-6 bg-deep-blue md:hidden'>
         <Header as='h2' size='md'>
-          {texts.whoAmI.title}
+          About Me
         </Header>
 
         <div className='flex flex-col gap-6 items-center bg-deep-blue rounded-md'>
@@ -33,40 +28,37 @@ export const WhoAmI: FC = async () => {
             <Avatar
               width={100}
               height={100}
-              src={avatarImage?.attributes.url || ''}
-              alt={avatarImage?.attributes.alternativeText || ''}
+              src={MePic}
+              alt="Site owner's picture"
             />
             <Header as='h3' size='xs' className='text-slate-400'>
-              {texts.whoAmI.subtitle}
+              John Doe
             </Header>
           </div>
           <div className='mdx-wrapper text-slate-400'>
-            <MDXRemote source={richText?.attributes.value || ''} />
+            <MDXRemote source={richText} />
           </div>
         </div>
 
         <CTAButton href='/form/location' fluid>
-          {texts.whoAmI.cta}
+          {richText}
         </CTAButton>
       </section>
 
       {/* Desktop & Tablets */}
       <section className='hidden md:flex p-6 bg-deep-blue gap-6 lg:gap-12 lg:p-12'>
         <div className='flex flex-col items-end gap-6 flex-[2] lg:gap-12'>
-          <CMSImage
-            src={avatarImage?.attributes.url || ''}
-            alt={avatarImage?.attributes.alternativeText || ''}
+          <Image
+            src={MePic}
+            alt="Site owner's picture"
             className='rounded-md'
-            sizes='(max-width: 480px) 90vw, 
-              (max-width: 768px) 80vw, 
-              (max-width: 1024px) 70vw, 
-              (max-width: 1200px) 60vw, 
-              50vw'
+            sizes='50vw'
             style={{
               width: '100%',
               height: 'auto',
               maxWidth: '300px',
             }}
+            placeholder='blur'
             height={300}
             width={300}
           />
@@ -74,14 +66,14 @@ export const WhoAmI: FC = async () => {
 
         <div className='flex flex-col items-start flex-[3] justify-between gap-6 lg:gap-12'>
           <Header as='h2' size='md'>
-            {texts.whoAmI.subtitle}
+            John Doe
           </Header>
 
           <div className='mdx-wrapper text-slate-400'>
-            <MDXRemote source={richText?.attributes.value || ''} />
+            <MDXRemote source={richText} />
           </div>
 
-          <CTAButton href='/form/location'>{texts.whoAmI.cta}</CTAButton>
+          <CTAButton href='/form/location'>Contact Now</CTAButton>
         </div>
       </section>
     </>
