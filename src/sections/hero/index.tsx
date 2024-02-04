@@ -25,7 +25,11 @@ export const Hero: FC<HeroProps> = async ({}) => {
           alt={heroImage.attributes.alternativeText}
           src={heroImage.attributes.url}
           fill
-          style={{ objectFit: 'cover', position: 'absolute' }}
+          sizes='100vw'
+          quality={100}
+          placeholder='blur'
+          blurDataURL={heroImage.attributes.formats.thumbnail.url}
+          style={{ objectFit: 'cover' }}
         />
       )}
 

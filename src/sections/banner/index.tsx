@@ -23,7 +23,11 @@ export const Banner: FC<BannerProps> = async ({}) => {
           alt={bannerImage.attributes.alternativeText}
           src={bannerImage.attributes.url}
           fill
-          style={{ objectFit: 'cover', position: 'absolute' }}
+          sizes='100vw'
+          quality={100}
+          placeholder='blur'
+          blurDataURL={bannerImage.attributes.formats.thumbnail.url}
+          style={{ objectFit: 'cover' }}
         />
       )}
 

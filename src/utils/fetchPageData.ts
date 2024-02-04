@@ -10,6 +10,11 @@ export type Page<TextsSchema = any> = {
         name: string;
         url: string;
         alternativeText: string;
+        formats: {
+          thumbnail: {
+            url: string;
+          };
+        };
       };
     }[];
   };
