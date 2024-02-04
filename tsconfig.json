@@ -20,7 +20,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "~/*": ["./*"]
     }
   },
   // workaround for cypress bug in the 13.6.2 version
