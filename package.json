@@ -22,6 +22,7 @@
     "next-mdx-remote": "^4.4.1",
     "react": "^18",
     "react-dom": "^18",
+    "sharp": "^0.33.2",
     "styled-components": "^6.1.8",
     "tailwind-variants": "^0.1.19",
     "yup": "^1.3.3"
