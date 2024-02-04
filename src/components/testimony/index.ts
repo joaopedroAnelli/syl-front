@@ -2,7 +2,7 @@ import { Root } from './root';
 import { Content } from './content';
 import { Author } from './author';
 import { Text } from './text';
-import { Image } from './image';
+import { TestimonyImage } from './image';
 import { Informations } from './informations';
 import { Name } from './name';
 import { Sub } from './sub';
@@ -12,7 +12,7 @@ const Testimony = {
   Content,
   Author,
   Text,
-  Image,
+  Image: TestimonyImage,
   AuthorInformations: Informations,
   Name,
   Sub,
