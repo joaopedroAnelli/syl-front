@@ -3,7 +3,7 @@ import { Avatar } from '@/components/avatar';
 import { Header } from '@/components/header';
 import { CTAButton } from '@/components/cta';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import MePic from '~/public/images/me.png';
+import MePic from '~/public/images/Me.png';
 import Image from 'next/image';
 
 export const WhoAmI: FC = async () => {
