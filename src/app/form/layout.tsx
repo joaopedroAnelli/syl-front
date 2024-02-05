@@ -1,5 +1,4 @@
 import { FormProvider } from './context';
-import { fetchPageData } from '@/utils/fetchPageData';
 import { FormTexts } from './types';
 import InteractiveArea from './interactive-area';
 import { Footer } from '@/sections/Footer';
@@ -9,9 +8,14 @@ export default async function FormLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const data = await fetchPageData<FormTexts>('Form');
+  const texts: FormTexts = {
+    location: 'Property Location',
+    details: 'Offer Details',
+    contact: 'Contact Information',
+    confirmation: 'Confirmation',
+  };
 
-  const textsEntries = Object.entries(data.texts);
+  const textsEntries = Object.entries(texts);
 
   const entriesWithFormRoute = textsEntries.map(([key, value]) => {
     return ['/form/' + key, value];
