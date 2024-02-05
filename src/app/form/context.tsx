@@ -5,6 +5,12 @@ import { FormContext as FormContextType, SubmitStatus } from './types';
 import { useRouter } from 'next/navigation';
 import { Toast } from '@/components/toast';
 
+type CmsResponse = {
+  ok: boolean;
+  text: () => Promise<string>;
+  statusText: string;
+};
+
 const INITIAL_DATA = {
   address: '',
   city: '',
@@ -44,9 +50,14 @@ export const FormProvider: FC<PropsWithChildren<FormProviderProps>> = ({
   const submitForm = async () => {
     setSubmitStatus(SubmitStatus.LOADING);
 
-    const cmsResponse = await fetch('/api/properties', {
-      method: 'POST',
-      body: JSON.stringify(data),
+    const cmsResponse = await new Promise<CmsResponse>((resolve) => {
+      setTimeout(() => {
+        resolve({
+          ok: true,
+          text: () => Promise.resolve(''),
+          statusText: '',
+        });
+      }, 1000);
     });
 
     if (!cmsResponse.ok) {
